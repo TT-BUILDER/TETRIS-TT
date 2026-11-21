@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Tetris Test</title>
+        <link rel="icon" href="./assets/icon.png">
+        <style>
+            body {
+                background-color: gray;
+                font-family: monospace;
+                font-size: 1rem;
+            }
+            canvas {
+                image-rendering: crisp-edges;
+            }
+            div.scoreBord {
+                font-size: 2rem;
+            }
+            p {
+                margin-top: 0;
+                margin-bottom: 0.5rem;
+            }
+            div.howToPlay {
+                font-size: 1.5em;
+            }
+            div.mainScreen {
+                display: flex;
+            }
+            div#score {
+                color: white;
+            }
+            div#hiScore {
+                color: yellow;
+            }
+            div#lines,div#levels {
+                color: aquamarine;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="./assets/minos.png" id="minoAssets" style="display: none;">
+        <img src="./assets/costume.png" id="image-1" style="display: none;">
+        <img src="./assets/costume2.png" id="image-2" style="display: none;">
+
+        <div class="mainScreen">
+            <!--canvasタグでおえかきゾーンを"canvas"という名前で生成-->
+            <canvas id="canvas" style="background-color: black;"></canvas>
+            <!--プログラム本体-->
+            <script src="./js/main.js" defer></script>
+            <div class="scoreBord">
+                <div id="hiScore">HI-SCORE:</div>
+                    <p id ="hiScoreNum">*hi-score*</p>
+                <div id="score">SCORE:</div>
+                    <p id ="scoreNum">*score*</p>
+                <div id="lines">LINES:</div>
+                    <p id ="linesNum">*lines*</p>
+                <div id="levels">LEVELS:</div>
+                    <p id ="levelsNum">*levels*</p>
+            </div>
+    
+            <div class="howToPlay" style="margin-left: 2rem;">
+                <p id="JP">
+                    操作方法<br>
+                    矢印キー（左右）：ミノの移動<br>
+                    矢印キー（上）：ハードドロップ<br>
+                    Z,Q：左回転<br>
+                    X,W：右回転<br>
+                    スペース,P：ポーズ（一時停止）<br>
+                </p>
+                <p id="EN" style="display: none;">
+                    How to Play:<br>
+                    Arrow Keys (Left,Right) : move the Mino<br>
+                    Arrow Keys (Up) : Hard Drop<br>
+                    Z,Q : Rotate the Mino to Left<br>
+                    X,W : Rotate the Mino to right<br>
+                    Space,P : pause<br>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
