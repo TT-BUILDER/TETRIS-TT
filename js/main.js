@@ -704,6 +704,9 @@ const render = {
 
         for (let i = 0; i<setting.showingNextListLength; i++){
             //console.log([setting.scWidthTile+1,TILESIZE*5*i]);
+
+            if (i >= nextMinoArrays.length) break;
+            
             this.drawOneShapeScaled(
                 stxSC,
                 stySC + 5*i*size,
