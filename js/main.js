@@ -122,13 +122,17 @@ const setting = {
     kindOfShape:7,
     nextListLength:7,
     showingNextListLength:6,
-    scoreDigit:6,
+    scoreDigit:0,
     stringsColor:"rgb(0,224,224)",
     stringSize:16
 };
 //設定を変更
 setting.kindOfShape = setting.shape.length;
 setting.stringSize = setting.scTileSize;
+//大きすぎるscoreDigitを小さくする
+if (setting.scoreDigit > 20) setting.scoreDigit = 20;
+//あまりにも小さいscoreDigitを大きくする
+if (setting.scoreDigit < 6) setting.scoreDigit = 6;
 //1タイルあたりの大きさ
 const TILESIZE = setting.scTileSize;
 //盤面の大きさ設定
@@ -156,6 +160,7 @@ let isGameOver = false;
 const nextMinoArrays = [];
 const canReadableGMimageKeys = [];
 
+//アセットの読み込みを管理する
 class Assets {
     constructor(){
         this.assetsStatus = {
@@ -204,6 +209,7 @@ class Assets {
     }
 
 }
+//プレイヤーからのキー入力を管理する
 class KeyManage {
     constructor(){
         this.isKeyManager = true;
@@ -262,6 +268,7 @@ class KeyManage {
     }
 
 }
+//テトリミノを管理する
 class Tetromino {
     constructor(){
         this.shapes = null;
@@ -475,13 +482,13 @@ class Tetromino {
 
     }
 }
-//アセットコンテナ
+//アセットコンテナちゃん
 const assetContainer = new Assets();
-//
+//キー入力管理ちゃん
 const key = new KeyManage();
-//
+//テトリミノちゃん
 const mino = new Tetromino();
-//関数群
+//関数群（mergeColorは多分未使用）
 const randFloat = (st,en) => (en-st)*Math.random()+st;
 const randInt = (st,en) => Math.floor((en-st+1)*Math.random())+st;
 const meregeColor = (C,T,d) => {
@@ -493,6 +500,7 @@ const meregeColor = (C,T,d) => {
     ];
 };
 
+//盤面ちゃん
 const bord = Array.from({length : setting.scHeightTile} , () => Array(setting.scWidthTile).fill(0) );
 mino.setBordArray(bord);
 initNext();
